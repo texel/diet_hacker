@@ -1,3 +1,9 @@
 [submodule "vendor/rails"]
 	path = vendor/rails
 	url = git://github.com/rails/rails.git
+[submodule "vendor/gems/gchart"]
+	path = vendor/gems/gchart
+	url = git@github.com:texel/gchart.git
+[submodule "vendor/gems/texel-gchart"]
+	path = vendor/gems/texel-gchart
+	url = git@github.com:texel/gchart.git

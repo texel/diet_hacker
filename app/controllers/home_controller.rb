@@ -7,7 +7,6 @@ class HomeController < ApplicationController
       chart.title = "Weight over time"
       all_data = DataPoint.for_xy_line(@current_user.data_points)
       eight_day = DataPoint.for_xy_line(@current_user.eight_day_averages)
-      # chart.data = [[0,1,2,3,4,5], [0,1,2,3,4,5],[0,1,2,3,4,5], [0,1,2,3,4,5]]
       chart.data = [DataPoint.scale(all_data[0]), DataPoint.scale(all_data[1]), DataPoint.scale(eight_day[0], all_data[0].min), DataPoint.scale(eight_day[1], all_data[1].min)]
       chart.colors = :red, :blue
       chart.legend = "Daily", "8 Day Average"
