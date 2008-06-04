@@ -1,0 +1,13 @@
+<p>
+  <b>Weight:</b>
+  <%=h @data_point.weight %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @data_point.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_data_point_path(@data_point) %> |
+<%= link_to 'Back', data_points_path %>

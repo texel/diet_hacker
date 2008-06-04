@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  weight: 1.5
+  user_id: 1
+
+two:
+  weight: 1.5
+  user_id: 1

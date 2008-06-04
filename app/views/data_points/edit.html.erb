@@ -1,0 +1,22 @@
+<h1>Editing data_point</h1>
+
+<%= error_messages_for :data_point %>
+
+<% form_for(@data_point) do |f| %>
+  <p>
+    <b>Weight</b><br />
+    <%= f.text_field :weight %>
+  </p>
+
+  <p>
+    <b>User</b><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @data_point %> |
+<%= link_to 'Back', data_points_path %>
