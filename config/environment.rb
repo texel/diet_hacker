@@ -56,6 +56,5 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
-  #require 'gchart'
-  config.gem "texel-gchart"
+  require "#{RAILS_ROOT}/../../gems/gchart/lib/gchart"
 end

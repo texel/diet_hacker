@@ -1,7 +1,10 @@
 <h3>Data Points</h3>
-<%= image_tag @chart.to_url %>
-<%= render :partial => @data_points %>
-
+<%= image_tag @chart.to_url unless @chart.blank? %>
 <%- if @current_user.data_points.for_date(Date.today).blank? -%>
-<%= link_to "Enter a new data point", new_data_point_path %>
+<div>
+	<%= link_to "Enter a new data point", new_data_point_path %>
+</div>
 <%- end -%>
+<div>
+	<%= render :partial => @data_points %>
+</div>

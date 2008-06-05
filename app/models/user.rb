@@ -50,6 +50,37 @@ class User < ActiveRecord::Base
     end
     averages
   end
+  
+  def prepare_chart
+    data_points = self.data_points
+    unless data_points.length <= 3
+      chart = GChart.xyline do |chart|
+        chart.title = "Weight over time"
+        all_data = DataPoint.for_xy_line(data_points)
+        eight_day = DataPoint.for_xy_line(self.eight_day_averages) unless data_points.length < 8
+        chart_data = []
+        unless all_data.blank?
+          [DataPoint.scale(all_data[0]), DataPoint.scale(all_data[1])].each do |v|
+            chart_data << v
+          end
+        end
+        unless eight_day.blank?
+          [DataPoint.scale(eight_day[0], all_data[0].min), DataPoint.scale(eight_day[1], all_data[1].min)].each do |v|
+            chart_data << v
+          end
+        end
+        chart.data = chart_data
+        chart.colors = [:red, :blue]
+        legends = ["Daily"] ; legends << "8 Day Average" if eight_day
+        chart.legend = legends
+        #chart.axis(:left) { |a| a.range = 0..250 }
+        #chart.axis(:bottom) { |a| a.range = 0..1000}
+        chart.size = "500x400"
+        chm_args = chart.data[0].map {|index| "s,ff9900,0,#{index},5.0"}.join("|")
+        chart.extras = {:chm => chm_args}
+      end
+    end
+  end
 
   protected
     

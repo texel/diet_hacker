@@ -10,7 +10,9 @@
 <body>
 
 <p style="color: green"><%= flash[:notice] %></p>
-
+<%- if @current_user -%>
+	Hello, <%= @current_user.login %>! <%= link_to "Logout", logout_path %>
+<%- end -%>
 <%= yield  %>
 
 </body>
